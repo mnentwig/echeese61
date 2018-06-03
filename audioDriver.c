@@ -90,7 +90,7 @@ void audio_init(void){
 snd_pcm_t *pcm_handle;
 float *buff;
 snd_pcm_uframes_t frames;
-void audio_init() {
+void audio_init2() {
   unsigned int tmp;
   snd_pcm_hw_params_t *params;
   int buff_size;
@@ -136,16 +136,30 @@ void audio_init() {
   snd_pcm_hw_params_get_period_time(params, &tmp, NULL);
 }
 
-float v = 0;
+void audio_init() {
+  int err;
+  if ((err = snd_pcm_open(&pcm_handle, "default", SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
+    printf("Playback open error: %s\n", snd_strerror(err));
+    exit(EXIT_FAILURE);
+  }
+  if ((err = snd_pcm_set_params(pcm_handle,
+				SND_PCM_FORMAT_FLOAT_LE,
+				SND_PCM_ACCESS_RW_INTERLEAVED,
+				2,
+				48000,
+				0,
+				1000)) < 0) {
+    printf("Playback open error: %s\n", snd_strerror(err));
+    exit(EXIT_FAILURE);
+  }
+  buff = (float *) malloc(1024*2*sizeof(float));
+}
+
 void audio_run(){
-  frames = 16;
+  frames = 32;
   for(int ix=0; ix<frames; ++ix){
     float val;
     engine_run(&val);
-    //val = v;
-    v = v + 0.01;
-    if (v > 1)
-      v -= 2;
     buff[2*ix] = val;
     buff[2*ix+1] = val;
   }
