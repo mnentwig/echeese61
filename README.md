@@ -1,5 +1,5 @@
 # eCheese61
-Fun project to turn Raspberry Pi into "Transistor Organ From Hell" :-)
+Fun project to turn Raspberry Pi into "Transistor Organ From Hell"
 
 UNDER CONSTRUCTION
 
