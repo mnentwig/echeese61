@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include <alsa/asoundlib.h>     /* Interface to the ALSA system */
 
 // ***************************************************************
 // MIDI parser
@@ -18,11 +19,20 @@ u32 MIDI_mChan;
 u32 MIDI_noteState[128];
 
 enum {eMIDI_cmd, eMIDI_arg1, eMIDI_arg2, eMIDI_sysex};
+snd_rawmidi_t* midiin = NULL;
 void MIDI_init(void){
   MIDI_state = eMIDI_cmd;
   u32 ix;
   for (ix=0; ix < 128; ++ix)
     MIDI_noteState[ix] = 0;
+
+  int status;
+  int mode = SND_RAWMIDI_SYNC;
+  const char* portname = "hw:1,0,0";  // see alsarawportlist.c example program
+  if ((status = snd_rawmidi_open(&midiin, NULL, portname, mode)) < 0) {
+    fprintf(stderr, "Problem opening MIDI input: %s", snd_strerror(status));
+    exit(EXIT_FAILURE);
+  }
 }
 
 void MIDI_parse(u32 b){
@@ -98,4 +108,14 @@ void MIDI_parse(u32 b){
   case eMIDI_sysex:
     break;
   }
+}
+
+void MIDI_run(){
+  char buffer[1];        // Storage for input buffer received
+  int status;
+  if ((status = snd_rawmidi_read(midiin, buffer, 1)) < 0) {
+    fprintf(stderr, "Problem reading MIDI input: %s", snd_strerror(status));
+    exit(EXIT_FAILURE);
+  }
+  MIDI_parse(buffer[0]);
 }

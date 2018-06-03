@@ -5,6 +5,7 @@
 #define FRAMES_PER_BUFFER  (8)
 //#define FRAMES_PER_BUFFER  (1024)
 //#define FRAMES_PER_BUFFER  (256)
+double idle = 0;
 static int pa_callback(const void *inputBuffer, void *outputBuffer,
 			  unsigned long framesPerBuffer,
 			  const PaStreamCallbackTimeInfo* timeInfo,
@@ -18,7 +19,12 @@ static int pa_callback(const void *inputBuffer, void *outputBuffer,
   
   for(int ix=0; ix<framesPerBuffer; ++ix){
     float val;
-    engine_run(&val);
+    //engine_run(&val);
+    val =0;
+    val += idle;
+    idle += 0.001;
+    if (idle > 0.01)
+      idle -= 0.02;
     *out++ = val;
     *out++ = val;
   }    

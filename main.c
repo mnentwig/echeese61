@@ -22,7 +22,7 @@ int main(void){
   MIDI_init();
   
   while (1){
-    Pa_Sleep( 1 * 1000 );
+    MIDI_run();
   }
   return 0;
 }

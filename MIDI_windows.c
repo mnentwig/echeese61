@@ -41,3 +41,6 @@ void MIDI_init(void){
   midiInStart(inHandle);  
 }
 
+void MIDI_run(void){
+  Pa_Sleep( 1 * 1000 );
+}
