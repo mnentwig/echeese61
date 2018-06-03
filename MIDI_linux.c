@@ -27,11 +27,16 @@ void MIDI_init(void){
     MIDI_noteState[ix] = 0;
 
   int status;
-  int mode = SND_RAWMIDI_SYNC;
+  int mode = SND_RAWMIDI_SYNC;// |    SND_RAWMIDI_NONBLOCK;
   const char* portname = "hw:1,0,0";  // see alsarawportlist.c example program
   if ((status = snd_rawmidi_open(&midiin, NULL, portname, mode)) < 0) {
     fprintf(stderr, "Problem opening MIDI input: %s", snd_strerror(status));
     exit(EXIT_FAILURE);
+  }
+  status = snd_rawmidi_nonblock(midiin, 1);
+  if (status < 0){
+    fprintf(stderr, "Problem setting MIDI nonblock mode: %s", snd_strerror(status));
+    exit(EXIT_FAILURE);    
   }
 }
 
@@ -111,11 +116,18 @@ void MIDI_parse(u32 b){
 }
 
 void MIDI_run(){
-  char buffer[1];        // Storage for input buffer received
-  int status;
-  if ((status = snd_rawmidi_read(midiin, buffer, 1)) < 0) {
-    fprintf(stderr, "Problem reading MIDI input: %s", snd_strerror(status));
-    exit(EXIT_FAILURE);
+  char buffer[256];
+  while (1){
+    int status = snd_rawmidi_read(midiin, buffer, sizeof(buffer));
+    if (status < 0) {
+      // fprintf(stderr, "Problem reading MIDI input: %s", snd_strerror(status));
+      return;
+    }
+    if (status == 0)
+      return;
+    for (int ix = 0; ix < status; ++ix)
+      MIDI_parse(buffer[ix]);
+    if (status < sizeof(buffer))
+      return;
   }
-  MIDI_parse(buffer[0]);
 }

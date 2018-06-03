@@ -2,7 +2,7 @@ void MIDI_noteon(u32 chan, u32 key, u32 vel){
   //  printf("noteon %i\n", key); fflush(stdout);
   int k = key - 48;
   if ((k >= 0) && (k < NOSC)){
-    oscVol[k] = 0.1;
+    oscVol[k] = 0.05;
   }
 }
 void MIDI_noteoff(u32 chan, u32 key){

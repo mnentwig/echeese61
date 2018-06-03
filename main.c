@@ -18,11 +18,15 @@ int main(void){
   for (int ix = 0; ix < NOSC; ++ix){
     oscVol[ix] = 0;
   }
-  portaudio_init();
+  //oscVol[30] = 0.01;
+  audio_init();
   MIDI_init();
-  
+
+  //int count = 0;
   while (1){
     MIDI_run();
+    audio_run();
+    //printf("%i\n", (count++));
   }
   return 0;
 }
