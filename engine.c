@@ -1,6 +1,25 @@
 #include "include/oscillators.h"
 uint32_t oscPhase[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 #include "include/oscDeltaPhase.h"
+volatile float oscVol[NOSC];
+
+void engine_init(){
+  for (int ix = 0; ix < NOSC; ++ix){
+    oscVol[ix] = 0;
+  }
+  //oscVol[30] = 0.1;
+}
+
+void engine_on(int key){
+  if ((key < 0) || (key >= NOSC))return;
+  oscVol[key] = 1;
+}
+
+void engine_off(int key){
+  if ((key < 0) || (key >= NOSC))return;
+  oscVol[key] = 0;
+}
+
 void engine_run(float* outVal){
   float oscOut[NOSC];
 

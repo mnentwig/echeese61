@@ -1,7 +1,15 @@
-all:
-#	gcc -std=c99 -I/usr/include -L/usr/lib -DWINDOWS -Wall -Ofast -g main.c -lportaudio -lwinmm
-	gcc -std=c99 -I../portaudio/include -DLINUX -Wall -Ofast -g main.c ../portaudio/lib/.libs/libportaudio.a -lasound -lm -lpthread
-#	gcc -I/usr/local/include -L/usr/local/lib -DLINUX -Wall -O2 -g main.c -lportaudio
-clean:
-	rm -f a.out patch.c
-	find . -name "*~" -exec rm {} \;
+#
+# Makefile
+#
+
+CIRCLEHOME = circle
+
+OBJS	= main.o
+
+LIBS	= $(CIRCLEHOME)/lib/usb/libusb.a \
+	  $(CIRCLEHOME)/lib/input/libinput.a \
+	  $(CIRCLEHOME)/lib/fs/libfs.a \
+	  $(CIRCLEHOME)/lib/libcircle.a
+
+OPTIMIZE += -Ofast -funsafe-math-optimizations
+include circle/Rules.mk
