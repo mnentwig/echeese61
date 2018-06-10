@@ -2,7 +2,7 @@
 Fun project to turn Raspberry Pi into "Transistor Organ From Hell"
 
 # Motivation
-Germanium transistors brought a revolution to organ design, replacing cogs and wheels with solid state dividers, driven from LC oscillators that "almost" stayed in tune. But, consumer electronics still had a long way to go with the idea of reliability, and playing a vintage instrument nowadays is out of reach for most ordinary mortals and still a gamble for the rest ("how many keys will break today?")
+Germanium transistors brought a revolution to organ design, replacing cogs and wheels with solid state dividers, driven from LC oscillators that "almost" stayed in tune. But, consumer electronics still had a long way to go with the idea of reliability, and playing a vintage instrument nowadays is out of reach for ordinary mortals and remains a gamble for the rest ("how many keys will break today?")
 
 But, the sound... it has a very unique quality that is impossible to replicate with conventional sample-playback synths because the relative phase between partials coming from the same oscillator is deterministic.
 
