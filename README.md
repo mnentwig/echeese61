@@ -28,8 +28,14 @@ Right now: 8' drawbar through the "reed" channel at fixed level. And that's all.
 
 The organ is fully polyphonic with constant CPU load. Try this at your own risk.
 
+Note, there is no USB hotplugging. A USB midi keyboard needs to be connected at boottime. Disconnection requires reboot.
+
+# Performance
+* Boot time: currently ~5 seconds from power-up, give or take some
+* Latency / Jitter: 256 samples at 48 kHz => 6 ms plus USB
+
 # Controls
-MIDI USB (must be visible at boot. No hotplug!
+MIDI USB noteon, noteoff
 
 # Installation
 The git repository contains the binary file kernel8-32.img (Raspberry PI 3 only). 
