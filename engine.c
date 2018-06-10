@@ -7,11 +7,11 @@ void engine_init(){
   for (int ix = 0; ix < NOSC; ++ix){
     oscVol[ix] = 0;
   }
-  //oscVol[30] = 0.1;
 }
 
 void engine_on(int key){
   if ((key < 0) || (key >= NOSC))return;
+  // note: This is fullscale => single key is clean, multiple keys clip
   oscVol[key] = 1;
 }
 
@@ -60,10 +60,8 @@ void engine_run(float* outVal){
       acc *= fracPart;
       acc += *pL; // c0
       *(pOut++) = acc;
-      //if (ix == 11 && shift == 0)
-      // printf("%i\t%f\t%f\n", intPart, fracPart, acc);      
       sum += oscVol[count++] * acc;
     } // for oscillator
   } // for divider
-  *outVal = sum; //oscOut[3];
+  *outVal = sum;
 }

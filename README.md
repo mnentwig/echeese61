@@ -63,3 +63,5 @@ Then use explicit "make kernel8-32.hex" and send it as plain text using 115200 b
 
 # Notes
 Play through an amp and use tone controls (we wouldn't plug a vintage instrument straight to the console). This also softens the key click.
+
+Right now, output volume is set to clip for more than one key at a time, which sounds quite OK (edit e.g. 1 => 0.1 in engine.c for a clean sound at lower volume)
