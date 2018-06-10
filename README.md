@@ -10,7 +10,7 @@ These days, a Raspberry Pi has enough computational horsepower for the math, wit
 
 Also, the horrible PWM sound quality seems oddly appropriate (a circle driver for an external codec is available but so far untried).
 
-#What?!
+# What?!
 See for yourself: [Audio demo](transistorOrganFromHell.m4a)
 
 This was phone-recorded though a Leslie cabinet. Background noises are me hacking away on a "Roland GO Piano" plastic keyboard. 
