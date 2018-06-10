@@ -16,6 +16,8 @@ This project uses the "circle" library without any further operating system.
 # Features
 Right now: 8' drawbar through the "reed" channel at fixed level. And that's all.
 
+The organ is fully polyphonic with constant CPU load. Try at your own risk.
+
 # Controls
 MIDI USB (must be visible at boot. No hotplug!
 
