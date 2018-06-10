@@ -1,2 +1,5 @@
 *~
+*.o
+*.lst
+*.map
 a.out

@@ -100,11 +100,10 @@ void CKernel::MIDIPacketHandler (unsigned nCable, u8 *pPacket, unsigned nLength)
   
   if (ucType == 0x9){
     //gKernel-> m_Logger.Write ("kernel", LogNotice, "MIDI ON");
-    //oscVol[30] = 0;
-    engine_on(ucKeyNumber-48);
+    engine_on(ucKeyNumber);
   } else if (ucType == 0x8){
     //gKernel-> m_Logger.Write ("kernel", LogNotice, "MIDI OFF");
-    engine_off(ucKeyNumber-48);
+    engine_off(ucKeyNumber);
   }
 }
 
