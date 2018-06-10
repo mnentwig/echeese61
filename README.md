@@ -17,13 +17,16 @@ This was phone-recorded though a Leslie cabinet. Background noises are me hackin
 
 Note, the organ's key click itself seems pretty balanced.
 
-# Bare metal implementation
-This project uses the "circle" library without any further operating system.
+# Requirements
+* Raspberry Pi 3 (older versions should work too but need to recompile. The provided image is PI3-specific)
+* USB MIDI class compliant keyboard (the vast majority of keyboards with USB connection for PC should work)
+* Amplifier, guitar effect, etc. Plain headphones will work, too.
+* SD card (this project uses the "circle" library without any further operating system)
 
 # Features
 Right now: 8' drawbar through the "reed" channel at fixed level. And that's all.
 
-The organ is fully polyphonic with constant CPU load. Try at your own risk.
+The organ is fully polyphonic with constant CPU load. Try this at your own risk.
 
 # Controls
 MIDI USB (must be visible at boot. No hotplug!
