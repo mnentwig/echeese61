@@ -17,7 +17,7 @@ This project uses the "circle" library without any further operating system.
 Right now: 8' drawbar through the "reed" channel at fixed level. And that's all.
 
 # Controls
-MIDI USB (must be visible at boot. No hotplug)
+MIDI USB (must be visible at boot. No hotplug!
 
 # Installation
 The git repository contains the binary file kernel8-32.img (Raspberry PI 3 only). 
@@ -43,3 +43,5 @@ https://github.com/dwelch67/raspberrypi/tree/master/boards/pi3/aarch32/bootloade
 
 Then use explicit "make kernel8-32.hex" and send it as plain text using 115200 baud (e.g. Teraterm, "File / send file"). On completed upload, press "g" to boot.
 
+# Notes
+Play through an amp and use tone controls (we wouldn't plug a vintage instrument straight to the console). This also softens the key click.
