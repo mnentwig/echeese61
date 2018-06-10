@@ -6,7 +6,9 @@ Germanium transistors brought a revolution to organ design, replacing cogs and w
 
 But, the sound... it has a very unique quality that is impossible to replicate with conventional sample-playback synths because the relative phase between partials coming from the same oscillator is deterministic.
 
-Nowadays, a Raspberry Pi has enough computational horsepower for the math, with some left to spare, and its reliability is head and shoulders above any piece of mid-60ies analog hardware (and adding a spare unit for USD 40 gets the hardware failure risk down into denormal number range). Also, the horrible PWM sound quality seems oddly appropriate (a circle driver for an external codec is available but so far untried).
+These days, a Raspberry Pi has enough computational horsepower for the math, with some left to spare. Its reliability is head and shoulders above any piece of mid-60ies analog hardware, and adding a spare unit for USD 40 gets the hardware failure risk down into denormal number range. 
+
+Also, the horrible PWM sound quality seems oddly appropriate (a circle driver for an external codec is available but so far untried).
 
 # Bare metal implementation
 This project uses the "circle" library without any further operating system.
