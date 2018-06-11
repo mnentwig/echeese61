@@ -83,7 +83,7 @@ void engine_updateOscVol(){
   p1 = oscPts;
   for (int ix = NOSC; ix != 0; --ix){
     int pts = *(p1++);
-    *(tmpF++) = pts > 0 ? 0.03 : 0.0001;
+    *(tmpF++) = pts > 0 ? 0.1 : 0.0001*0;
   }
 }
 
