@@ -1,3 +1,0 @@
-# edit those and source in bash
-export PREFIX=/c/temp/arm/bin/arm-none-eabi-
-export CIRCLEHOME=/c/temp/eCheese61/circle
